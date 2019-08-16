@@ -1,0 +1,43 @@
+@import "_mixins";
+@import "_fonts";
+@import "_colors";
+
+.All_retailers {
+  width: 100%;
+  height: auto;
+  padding-top: 84px;
+  font-family: $OpenSans-Regular;
+  font-weight: bold;
+  .search_retail {
+    padding-left: 7.71%;
+    margin-bottom: 41px;
+    label {
+      font-size: 30px;
+    }
+    input {
+      @include box(462px,63px);
+      margin-left: 100px;
+      padding-left: 33px;
+      font-size: 24px;
+    }
+  }
+  .retail_img {
+    margin-left: 7.71%;
+    margin-right: 7.71%;
+    img {
+      margin-bottom: 50px;
+      @include box(16.4%,164px);
+      border: 2px solid gray;
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8),
+      &:nth-child(9) {
+        margin-right: 2.8%;
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@import "_mixins";
+@import "_colors";
+@import "_fonts";
+.skiplink {
+  position: absolute;
+  left: -10000px;
+}
+@include screen(desktop){
+.header_top {
+  @include box($width: 100%,$height: auto);
+  .dc_logo {
+    @include box($width: 6.25%,$height: 74px);
+    margin-left: 4.3%;
+    padding-top: 9px;
+  }
+  .center_logo_desktop {
+    @include box($width: 24%,$height: 77px);
+    @include margin(14.1px,null,null,29%);
+    text-decoration: none; 
+  }
+  .search_icon {
+    @include box($width: 3.5%,$height: 50px);
+    @include padding(30px,null,null,21.45%);
+  }
+  a{
+    @include margin(30.5px,null,null,3.13%);
+  .Bayer_logo {
+    @include box($width: 3.8%,$height: 51.5px);
+    text-decoration: none;
+  }
+  }
+  p {
+    @include box($width: 4.3%,$height: 16px);
+    margin-left: 5%;
+    color: $green;
+    font-size: 12px;
+    margin-top: 0px;
+    font-weight: bold;
+    font-family: $OpenSans;
+  }
+}
+}
+
+@include screen(mobile){
+  .header_top {
+  @include box($width: 100%,$height: auto);
+
+}
+}

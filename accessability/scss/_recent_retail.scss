@@ -1,0 +1,29 @@
+@import "_mixins";
+
+.Recent_retail {
+  width: 100%;
+ 
+  h2 {
+    padding-left: 7.71%;
+    font-size: 30px;
+    font-family: $OpenSans-Regular;
+    font-weight: bold;
+  }
+ .img{
+   margin-left:23%;
+   margin-right:auto;
+ }
+  img {
+    @include box(164px,164px);
+    border: 3px solid $black;
+    @include padding(18px,1.25%,18px,1.25%);
+     margin-right: 6.4%;
+   
+  }
+  }
+
+
+.horizontal_line_2 {
+  @include margin(null,7.71%,null,7.71%);
+  margin-top: 78px;
+}

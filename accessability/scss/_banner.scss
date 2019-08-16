@@ -1,0 +1,121 @@
+@import "_mixins";
+@import "_colors";
+@import "_fonts";
+
+.banner {
+  @include box(100%,auto);
+  background-color: $lightblue;
+  text-align: center;
+  h1 {
+    @include padding(24px,null,20px,null);
+    color: $black;
+    font-family: $OpenSans-Regular;
+    font-weight: bold;
+    font-size: 40px;
+  }
+}
+
+.main {
+  @include box(100%,auto);
+  font-family: $OpenSans-Regular;
+  .sub_head {
+    font-size: 30px;
+    font-weight: bold;
+    @include margin(null,7.71%,null,7.71%);
+  }
+  .Single_product {
+    @include margin(null,null,null,7.71%);
+    display: flex;
+    flex-direction: row;
+    div {
+      &:nth-child(1) {
+        img {
+          @include box(133px,182px);
+        }
+      }
+      &:nth-child(2) {
+        padding-left: 3.7%;
+        width: 21.5%;
+        font-size: 16px;
+        #spot {
+          font-weight: bold;
+          font-size: 18px;
+        }
+      }
+      &:nth-child(3) {
+        padding-left: 2.7%;
+        width: 15.1%;
+        p {
+          font-weight: bold;
+        }
+       span{
+         display:block;
+          img {
+            @include box(22px,21px);
+            padding-right: 12px;
+          }
+      }
+      }
+      &:nth-child(3) {
+        width: 15.1%;
+        p {
+          font-weight: bold;
+            font-size: 18px;
+        }
+      span{
+         display:block;
+          img {
+            @include box(22px,21px);
+            padding-right: 12px;
+          }
+        }
+      }
+      &:nth-child(4) {
+        hr {
+          height: 260.1px;
+        }
+      }
+      &:nth-child(5) {
+        width: 15.1%;
+        padding-left: 1.714%;
+        padding-right: 1.714%;
+        p {
+          font-weight: bold;
+          font-size: 18px;
+        }
+       span{
+         display:block;
+          img {
+            @include box(22px,21px);
+            padding-right: 12px;
+          }
+        }
+      }
+      &:nth-child(6) {
+        hr {
+          height: 260.1px;
+        }
+      }
+      &:nth-child(7) {
+        width: 20.06%;
+        padding-left: 1.714%;
+        p {
+          font-weight: bold;
+            font-size: 18px;
+        }
+         span{
+         display:block;
+          img {
+            @include box(22px,21px);
+            padding-right: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.horizontal_line_1 {
+  @include margin(null,7.71%,null,7.71%);
+  margin-top: 47px;
+}

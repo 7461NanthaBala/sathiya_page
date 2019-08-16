@@ -1,0 +1,23 @@
+@import "_mixins";
+@import "_header";
+@import "_navigation";
+@import "_breadcrumb";
+@import "_banner";
+@import "_recent_retail";
+@import "_all_retail";
+@import "_footer";
+@import "_fonts";
+
+*:focus{
+  outline: 2px solid black;
+}
+@include screen(desktop) {
+  .center_logo_mob,.menu_mob {
+    display: none;
+  }
+}
+@include screen(tablet) {
+  .center_logo_desktop,.dc_logo,.search_icon,.logo_text {
+    display: none;
+  }
+}

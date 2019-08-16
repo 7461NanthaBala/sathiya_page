@@ -1,0 +1,38 @@
+@import "_mixins";
+@import "_colors";
+@import "_fonts";
+
+.Navigation {
+  @include box(100%,auto);
+  background-color:$lightblue;
+  @include padding(11.5px,null,14.5px,null);
+  a {
+    @include box(3.264%,19px);
+    text-decoration: underline;
+    color: $darkblue;
+    font-family: $OpenSans-Regular;
+    font-size: 16px;
+    @include padding(11.5px,null,14.5px,null);
+    &:first-child {
+    margin-left: 24.6%;
+    }
+    &:nth-child(2) {
+      margin-left: 2.5%;
+    }
+    &:nth-child(3) {
+      margin-left: 2.3%;
+    }
+    &:nth-child(4) {
+      margin-left: 3.2%;
+    }
+    &:nth-child(5) {
+      margin-left: 2.7%;
+    }
+    &:nth-child(6) {
+      margin-left: 1.9%;
+    }
+    &:nth-child(7) {
+      margin-left: 2.8%;
+    }
+  }
+}

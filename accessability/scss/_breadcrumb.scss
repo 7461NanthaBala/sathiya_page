@@ -1,0 +1,16 @@
+@import "_mixins";
+@import "_fonts";
+
+.Breadcrumb {
+    @include box(100%,auto);
+  ul{
+  list-style-type: none;
+  @include padding(8px,null,null,7.71%);
+  li {
+    display: inline-block;
+    @include font($family: $OpenSans-Regular,$size: 16px,$colour:$gray);
+    text-transform: uppercase;   
+  }
+}
+}
+

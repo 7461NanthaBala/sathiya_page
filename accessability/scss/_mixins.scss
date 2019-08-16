@@ -1,0 +1,238 @@
+//Padding mixin
+@mixin padding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+//Margin mixin
+@mixin margin($top, $right, $bottom, $left) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+//css3-prefix mixin
+@mixin css3-prefix($prop, $value) {
+  -webkit-#{$prop}: #{$value};
+  -moz-#{$prop}: #{$value};
+  -ms-#{$prop}: #{$value};
+  -o-#{$prop}: #{$value};
+  #{$prop}: #{$value};
+}
+
+//font-face mixin
+@mixin font-face($name, $file) {
+  @font-face {
+    font-family: "#{$name}";
+    src: url("../fonts/#{$file}.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+  }
+}
+
+//responsive-ratio mixin
+@mixin responsive-ratio($x,
+$y,
+$pseudo: false) {
+  $padding: unquote( ($y / $x) * 100 + "%");
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+// font-source mixin
+@mixin font($family: false,
+$size: false,
+$colour: false,
+$weight: false,
+$lh: false,
+$ls: false,
+$textalign: false) {
+  @if $family {
+    font-family: $family;
+  }
+  @if $size {
+    font-size: $size;
+  }
+  @if $colour {
+    color: $colour;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $lh {
+    line-height: $lh;
+  }
+  @if $ls {
+    letter-spacing: $ls;
+  }
+  @if $textalign {
+    text-align: $textalign;
+  }
+}
+// width and height mixin
+@mixin box($width: false,
+$height: false) {
+  @if $width {
+    width: $width;
+  }
+  @if $height {
+    height: $height;
+  }
+}
+// clearfix mixin
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// opacity mixin
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); // IE8
+}
+// @media query mixin
+@mixin screen($size) {
+  $desktop: "(min-width: 1025px)";
+  $tablet: "(min-width: 768px) and (max-width: 1024px)";
+  $mobile: "(min-width:0) and (max-width:767px)";
+  @if $size==desktop {
+    @media only screen and #{$desktop} {
+      @content;
+    }
+  } @else if $size==tablet {
+    @media only screen and #{$tablet} {
+      @content;
+    }
+  } @else if $size==mobile {
+    @media only screen and #{$mobile} {
+      @content;
+    }
+  } @else {
+    @media only screen and ($size) {
+      @content;
+    }
+  }
+}
+// Background Gradient mixin
+@mixin gradient($start-color,
+$end-color,
+$orientation) {
+  background: $start-color;
+  @if $orientation=="vertical" {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation=="horizontal" {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else {
+    background: -webkit-radial-gradient(
+      center,
+      ellipse cover,
+      $start-color,
+      $end-color
+    );
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}
+// Centering a block mixin
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+// Vertical centering mixin
+@mixin center-vertically {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include prefix(transform,
+    translate(-50%,
+    -50%),
+    "webkit" "ms");
+}
+// border mixin
+@mixin border($width,
+$style,
+$color) {
+  border-style: $style;
+  border-color: $color;
+  border-width: $width;
+}
+// border radius
+@mixin border-radii($topleft,
+$topright,
+$bottomright,
+$bottomleft) {
+  border-top-left-radius: $topleft;
+  border-top-right-radius: $topright;
+  border-bottom-right-radius: $bottomright;
+  border-bottom-left-radius: $bottomleft;
+  -webkit-border-top-left-radius: $topleft;
+  -webkit-border-top-right-radius: $topright;
+  -webkit-border-bottom-right-radius: $bottomright;
+  -webkit-border-bottom-left-radius: $bottomleft;
+  -moz-border-radius-topleft: $topleft;
+  -moz-border-radius-topright: $topright;
+  -moz-border-radius-bottomright: $bottomright;
+  -moz-border-radius-bottomleft: $bottomleft;
+}
+// Positioning
+@mixin position($position,
+$args) {
+  @each $o in top right bottom left {
+    $i: index($args, $o);
+    @if $i and $i+1 <=length($args) and type-of(nth($args,
+        $i+1)) ==number {
+      #{$o}: nth($args, $i + 1);
+    }
+  }
+  position: $position;
+}
+// Positioning helpers
+@mixin absolute($args: "") {
+  @include position(absolute,
+    $args);
+}
+@mixin fixed($args: "") {
+  @include position(fixed,
+    $args);
+}
+@mixin relative($args: "") {
+  @include position(relative,
+    $args);
+}
+// Vendor prefixing
+@mixin prefix($property,
+$value,
+$vendors: webkit moz ms o,
+$default: true) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  @if $default {
+    #{$property}: #{$value};
+  }
+}
+
+//calc prop
+@mixin calc($property, $expression) {  
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
